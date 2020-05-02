@@ -9,10 +9,10 @@ namespace studentGradeBook
         static void Main(string[] args)
         {
             
-            Console.WriteLine("Enter username");
+            Console.WriteLine("Enter username: ");
             String username = Console.ReadLine();
 
-            Console.WriteLine("Enter password");
+            Console.WriteLine("Enter password: ");
             String password = Console.ReadLine();
 
             while(username != "-1" && password != "-1")
@@ -72,7 +72,7 @@ namespace studentGradeBook
 
         private static void gradeManagement(StudentsList list)
         {
-            Console.WriteLine("Would you like to \"add\" or \"remove\" an exam or \"END\"?\n");
+            Console.WriteLine("Would you like to \"add\" or \"remove\" an exam or \"END\"?");
             String choice = Console.ReadLine().ToUpper();
 
             while(!choice.Equals("END"))
@@ -84,7 +84,7 @@ namespace studentGradeBook
                     Console.WriteLine("What student would you like to add an exam to?");
                     String name = Console.ReadLine();
 
-                    String examPrompt = "What is the exam number";
+                    String examPrompt = "What is the exam number?";
 
                     Console.WriteLine(examPrompt);
                     int examNum = Utility.intTester(examPrompt);
@@ -126,21 +126,21 @@ namespace studentGradeBook
 
         private static void studentManagement(StudentsList list)
         {
-            Console.WriteLine("Would you like to \"add\" or \"remove\" a student or \"END\"?\n");
+            Console.WriteLine("Would you like to \"add\" or \"remove\" a student or \"END\"?");
             String choice = Console.ReadLine().ToUpper();
 
             while(choice != "END")
             {
                 if(choice.Equals("ADD"))
                 {
-                    Console.WriteLine("Enter the student's name:\n");
+                    Console.WriteLine("Enter the student's name:");
                     String name = Console.ReadLine().Trim();
                     list.addStudent(name);
 
                 }else if (choice.Equals("REMOVE"))
                 {
                     list.showList();
-                    Console.WriteLine("What student would you like to remove?\n");
+                    Console.WriteLine("\nWhat student would you like to remove?");
                     String name = Console.ReadLine().Trim();
                     list.removeStudent(name);
 
@@ -157,12 +157,12 @@ namespace studentGradeBook
 
         private static bool authenticate(string username, string password)
         {
-            String [] listOfusername = { "a" };
-            String[] listOfpassword = { "a" };
+            String [] userNameDataBase = { "a" };
+            String[] passwordDataBase = { "a" };
 
-            for(int index = 0; index < listOfusername.Length; index++)
+            for(int index = 0; index < userNameDataBase.Length; index++)
             {
-                if(username.Equals(listOfusername[index]) && password.Equals(listOfpassword[index]))
+                if(username.Equals(userNameDataBase[index]) && password.Equals(passwordDataBase[index]))
                 {
                     return true;
                 }
