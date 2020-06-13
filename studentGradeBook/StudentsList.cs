@@ -9,57 +9,49 @@ namespace studentGradeBook
     {
         private List<Student> listOfStudents;
         private Student student;
+
         public StudentsList()
         {
             listOfStudents = new List<Student>();
-
         }
 
-        public void addStudent(String name)
+        public void addStudent(string name)
         {
-            student = new Student(name);
-            listOfStudents.Add(student);
+            this.student = new Student(name);
+            listOfStudents.Add(this.student);
         }
 
         public void showList()
         {
-            
-            String students = "Student List:\n ";
+            string students = "Student List:\n ";
             foreach (Student student in listOfStudents)
             {
-                students = students +"\n"+ student.Name;
+                students += "\n"+ student.Name;
             }
-            Console.WriteLine(students);
-               
+            Console.WriteLine(students); 
         }
 
         public void showGradesFrom(String name)
         {
+            //input a message if the student is not on the list
             int indexOfName = findStudentIndex(name);
             string grades = listOfStudents[indexOfName].showGrades();
 
             Console.WriteLine(grades);
         }
 
-        public void removeStudent(String name)
+        public void removeStudent(string name)
         {
-
             int indexOfName = findStudentIndex(name);
             
-            
-
             if(indexOfName >= 0)
-            {
                 listOfStudents.RemoveAt(indexOfName);
-            }
             else
-            {
                 Console.WriteLine("Student is not on the list!");
-            }
 
         }
 
-        public void removeExamFromStudent(String name, int examNumber)
+        public void removeExamFromStudent(string name, int examNumber)
         {
             int indexOfName = findStudentIndex(name);
 
@@ -74,24 +66,21 @@ namespace studentGradeBook
             }
         }
 
-        public void addExamToStudent(String name , int examNumber, int grade)
+        public void addExamToStudent(string name , int examNumber, int grade)
         {
-            int indexOfName = findStudentIndex(name);
+            int stdntIndex = findStudentIndex(name);
 
-            if (indexOfName >= 0)
+            if (stdntIndex >= 0)
             {
-                Student currentStudent = listOfStudents[indexOfName];
+                Student currentStudent = listOfStudents[stdntIndex];
                 currentStudent.addExam(grade, examNumber);
             }
             else
-            {
                 Console.WriteLine("Student is not on the list!");
-            }
 
         }
         
-
-        private int findStudentIndex(String name)
+        private int findStudentIndex(string name)
         {
             int currentIndex = 0;
             int index = -1;

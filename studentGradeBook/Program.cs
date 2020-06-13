@@ -29,46 +29,28 @@ namespace studentGradeBook
                     StudentsList list = new StudentsList();
                     while (!operation.Equals("END"))
                     {
-                        if (operation.Equals("STUDENT MANAGEMENT")){
-                            //Print all students grades
+                        if (operation.Equals("STUDENT MANAGEMENT"))
                             studentManagement(list);
-                            
-                            
-                        }else if(operation.Equals("GRADE MANAGEMENT"))
-                        {
+                        else if(operation.Equals("GRADE MANAGEMENT"))
                             gradeManagement(list);
-
-                        }
                         else
-                        {
                             Console.WriteLine("Operation is not possible");
-                        }
+
 
                         Console.WriteLine("Welcome, what operation would you like to do?\n-Student Management" +
                         " -Grade Management -END");
 
                         operation = Console.ReadLine().ToUpper().Trim();
-
-
                     }
-
-                    
-
-                    
                 }
                 Console.WriteLine("Enter username");
                 username = Console.ReadLine();
 
                 Console.WriteLine("Enter password");
                 password = Console.ReadLine();
-
             }
             Console.WriteLine("Program has been terminated");
-
-
         }
-
-
 
         private static void gradeManagement(StudentsList list)
         {
@@ -78,7 +60,6 @@ namespace studentGradeBook
             while(!choice.Equals("END"))
             {
                 if (choice.Equals("ADD")){
-
                     list.showList();
 
                     Console.WriteLine("What student would you like to add an exam to?");
@@ -95,13 +76,8 @@ namespace studentGradeBook
                     int grade = Utility.intTester(gradePrompt);
                    
                    
-                    list.addExamToStudent(name, examNum, grade);
-
-                    
-                    
-                    
-                }else if (choice.Equals("REMOVE"))
-                {
+                    list.addExamToStudent(name, examNum, grade);   
+                }else if (choice.Equals("REMOVE")){
                     list.showList();
 
                     Console.WriteLine("Whose exam would you like to remove?");
@@ -168,9 +144,6 @@ namespace studentGradeBook
                 }
             }
             return false;
-
-
-            
         }
     }
 }

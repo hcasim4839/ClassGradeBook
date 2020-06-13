@@ -10,68 +10,48 @@ namespace studentGradeBook
     {
 
         private List<Exam> examList;
-        private String name;
+        private string name;
         private Exam exam;
 
-        public  Student(String name)
+        public  Student(string name)
         {
             examList = new List<Exam>();
             Name = name;
-
         }
 
-        public void addExam(int grade, int examNumber)
+        public void addExam(int examNumber, int grade)
         {
-            exam = new Exam(grade, examNumber);
+            exam = new Exam(examNumber, grade);
             examList.Add(exam);
-            
-            
         }
 
         public void removeExam(int examNumber)
         {
-
             int index = 0;
-            int indexOfExam = -1;
-
             foreach (Exam exam in examList)
             {
                 if(exam.ExamNumber == examNumber)
                 {
-                    indexOfExam = index;
-                    examList.RemoveAt(indexOfExam);
+                    examList.RemoveAt(index);
                 }
                 index++;
             }
         }
+
         public string showGrades()
         {
-            String grades = "Grade List:\n";
-
-            foreach (Exam grade in examList)
+            string grades = "Grade List:\n";
+            foreach (Exam currentExam in examList)
             {
-
-                grades = grades + grade.Show() + "\n";
-            
+                grades += currentExam.Show() + "\n";
             }
             return grades;
         }
 
         public String Name
         {
-            get
-            {
-                return this.name;
-            }
-            set
-            {
-                String newNameCase = value.ToUpper();
-                this.name = newNameCase;
-
-            }
+            get{return this.name;}
+            set{this.name = value.ToUpper();}
         }
-
-         
-
     }
 }

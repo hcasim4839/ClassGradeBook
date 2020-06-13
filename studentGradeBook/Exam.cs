@@ -6,57 +6,33 @@ namespace studentGradeBook
 {
     class Exam
     {
-        private int grade = 0;
-        private int examNumber = 0;
+        private int grade;
+        private int examNumber;
+        private int upperGradeLimit = 100;
+        private int lowerGradeLimit = 0;
 
-
-        public Exam(int grade, int examNumber)
+        public Exam(int examNumber, int grade)
         {
             Grade = grade;
             ExamNumber = examNumber;
         }
 
-
-
-
-
         public int Grade
         {
-
-            set
-            {
-                if (value >= 0 && value <= 100)
-                {
-                    grade = value;
-                }
-                else
-                {
-                    grade = 0;
-                }
+            set{
+                grade = (value >= lowerGradeLimit && value <= upperGradeLimit) ? grade = value : grade = 0;
             }
-
         }
 
         public int ExamNumber
         {
-            get
-            {
-                return examNumber;
-            }
+            get{return examNumber;}
             set
             {
-                if (value > 0)
-                {
-                    examNumber = value;
-                }
-                else
-                {
-                    examNumber = 0;
-                }
+                examNumber = (value >= 0) ? examNumber = value : examNumber = 0;
             }
 
         }
-
 
         public string Show()
         {
